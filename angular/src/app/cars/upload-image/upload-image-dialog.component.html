@@ -1,14 +1,24 @@
-<div class="row" style="margin-bottom:15px;">
-  <div class="col-md-3">
-    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
-    <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
-  </div>
-  <div class="col-md-4">
-    <span class="upload" *ngIf="progress > 0">
-      {{progress}}%
-    </span>
-    <span class="upload" *ngIf="message">
-      {{message}}
-    </span>
+<div class="container">
+  <div class="row">
+      <div class="col-md-6 offset-md-3">
+          <h3>Choose File</h3>            
+          <div class="form-group">
+              <input type="file" name="image" (change)="fileProgress($event)" />
+          </div>
+          <div *ngIf="fileUploadProgress">
+              Upload progress: {{ fileUploadProgress }}
+          </div>
+          <div class="image-preview mb-3" *ngIf="previewUrl">
+              <img [src]="previewUrl" height="300" />                 
+          </div>
+
+          <div class="mb-3" *ngIf="uploadedFilePath">
+              {{uploadedFilePath}}
+          </div>
+           
+          <div class="form-group">
+              <button class="btn btn-primary"  (click)="onSubmit()">Submit</button>
+          </div>
+      </div>
   </div>
 </div>

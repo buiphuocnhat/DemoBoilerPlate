@@ -45,7 +45,4 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cars\" />
-  </ItemGroup>
 </Project>
