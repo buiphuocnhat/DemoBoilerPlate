@@ -1,0 +1,28 @@
+<form autocomplete="off">
+    <h1 mat-dialog-title>{{ "List Car" | localize }}</h1>
+    <mat-dialog-content>
+      <div class="row-fluid">
+        <div class="col-md-12">
+            <table class="table table-hover table-striped" [busy]="isTableLoading">
+                <thead>
+                  <tr>
+                    <th>{{ "Buy date" | localize }}</th>
+                    <th>{{ "Number" | localize }}</th>
+                    <th>{{ "Total" | localize }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let tran of transactions"
+                  >
+                    <td>{{ tran.buyDate }}</td>
+                    <td>{{ tran.number }}</td>
+                    <td>{{ tran.total }}</td>              
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </mat-dialog-content>
+  </form>
+  

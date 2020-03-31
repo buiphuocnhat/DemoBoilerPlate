@@ -1,0 +1,42 @@
+<form autocomplete="off" #createTransactionForm="ngForm" (ngSubmit)="save()">
+  <h1 mat-dialog-title>{{ "CreateNewTransaction" | localize }}</h1>
+  <mat-dialog-content>
+    <div class="row-fluid">
+      <div class="col-md-12">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="tran.buyDate" name="buyDate"> 
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            name="Number"
+            [placeholder]="'Number' | localize"
+            [(ngModel)]="tran.number"
+            maxlength="1024"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select [(ngModel)]="tran.carId" name="carId">
+            <mat-option *ngFor="let car of cars" [value]="car.id">{{car.name}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <div mat-dialog-actions align="end">
+    <button mat-button type="button" [disabled]="saving" (click)="close(false)">
+      {{ "Cancel" | localize }}
+    </button>
+    <button
+      mat-flat-button
+      type="submit"
+      flex="15"
+      color="primary"
+      [disabled]="!createTransactionForm.form.valid || saving"
+    >
+      {{ "Save" | localize }}
+    </button>
+  </div>
+</form>
